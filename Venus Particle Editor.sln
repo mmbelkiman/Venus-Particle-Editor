@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Venus Particle Editor", "Venus Particle Editor\Venus Particle Editor.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{046C631B-DF60-496E-B2ED-C7BBFBF2F059}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Venus Particle Editor\Venus_Particle_Editor.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{046C631B-DF60-496E-B2ED-C7BBFBF2F059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046C631B-DF60-496E-B2ED-C7BBFBF2F059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046C631B-DF60-496E-B2ED-C7BBFBF2F059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046C631B-DF60-496E-B2ED-C7BBFBF2F059}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DB7DD82-83C3-465D-BBA4-519320CCB724}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,121 @@
+﻿using GeonBit.UI.Entities;
+using GeonBit.UI.Entities.TextValidators;
+using Microsoft.Xna.Framework;
+using VenusParticleEngine.Core.Modifiers;
+using VenusParticleEngine.Core.Modifiers.Container;
+using System.Collections.Generic;
+
+namespace VenusParticleEditor.Modifiers
+{
+    class RectLoopContainer
+    {
+        private CheckBox _checkboxActive;
+        private string _key = "RectLoopContainerModifier";
+        private Panel _panelMaster;
+        private Panel _panelInside;
+        private Vector2 _masterSize = new Vector2(-1, 330);
+        private Vector2 _masterSizeMinimized = new Vector2(-1, 100);
+        private Dictionary<string, IModifier> _modifiers;
+
+        private Paragraph _paragraphWidth;
+        private TextInput _inputWidth;
+        private Paragraph _paragraphHeight;
+        private TextInput _inputHeight;
+
+        public Panel Panel
+        {
+            get { return _panelMaster; }
+        }
+
+        public RectLoopContainer()
+        {
+            _panelMaster = new Panel(_masterSize, PanelSkin.None, anchor: Anchor.AutoInline, offset: new Vector2(0, 0));
+            _panelInside = new Panel(new Vector2(GlobalFields.PANEL_EDITOR_INSIDE_SIZE.X, 210), PanelSkin.Simple, anchor: Anchor.AutoInline, offset: new Vector2(0, 0));
+            _checkboxActive = new CheckBox("Active", isChecked: false)
+            {
+                OnClick = (Entity btn) => { OnClickCheckboxActive(); }
+            };
+
+            _panelMaster.AddChild(new RichParagraph("{{GOLD}} Rect Loop Container"));
+            _panelMaster.AddChild(_checkboxActive);
+            _panelMaster.AddChild(_panelInside);
+
+            _paragraphWidth = new Paragraph("Width", size: new Vector2(0.5f, -1), anchor: Anchor.AutoInline);
+            _inputWidth = new TextInput(false, new Vector2(0.5f, -1f), anchor: Anchor.AutoInline);
+            _inputWidth.Validators.Add(new TextValidatorNumbersOnly(allowDecimal: false));
+            _inputWidth.Value = "1";
+            _inputWidth.ValueWhenEmpty = "1";
+            _panelInside.AddChild(_paragraphWidth);
+            _panelInside.AddChild(_inputWidth);
+
+            _paragraphHeight = new Paragraph("Height", size: new Vector2(0.5f, -1), anchor: Anchor.AutoInline);
+            _inputHeight = new TextInput(false, new Vector2(0.5f, -1f), anchor: Anchor.AutoInline);
+            _inputHeight.Validators.Add(new TextValidatorNumbersOnly(allowDecimal: false));
+            _inputHeight.Value = "1";
+            _inputHeight.ValueWhenEmpty = "1";
+            _panelInside.AddChild(_paragraphHeight);
+            _panelInside.AddChild(_inputHeight);
+
+            _panelInside.Visible = false;
+            _panelMaster.Size = _masterSizeMinimized;
+        }
+
+        public void Refresh(Dictionary<string, IModifier> modifiers)
+        {
+            _modifiers = modifiers;
+            if (_modifiers != null && _modifiers.ContainsKey(_key))
+            {
+                _inputWidth.Value = ((VenusParticleEngine.Core.Modifiers.Container.RectLoopContainerModifier)_modifiers[_key]).Width.ToString().Replace(",", ".");
+                _inputHeight.Value = ((VenusParticleEngine.Core.Modifiers.Container.RectLoopContainerModifier)_modifiers[_key]).Height.ToString().Replace(",", ".");
+            }
+        }
+
+        private void OnClickCheckboxActive()
+        {
+            if (_checkboxActive.Checked)
+            {
+                _modifiers.Add(_key, new VenusParticleEngine.Core.Modifiers.Container.RectLoopContainerModifier());
+            }
+            else
+            {
+                _modifiers.Remove(_key);
+            }
+        }
+
+        public void Update()
+        {
+            if (_modifiers == null) { return; }
+
+            if (_modifiers.ContainsKey(_key))
+            {
+                _panelInside.Visible = true;
+                _panelMaster.Size = _masterSize;
+                _checkboxActive.Checked = true;
+            }
+            else
+            {
+                _panelInside.Visible = false;
+                _panelMaster.Size = _masterSizeMinimized;
+                _checkboxActive.Checked = false;
+            }
+
+            if (_modifiers.ContainsKey(_key))
+            {
+                UpdateModifier(_modifiers[_key]);
+            }
+        }
+
+        private void UpdateModifier(IModifier modifier)
+        {
+            RectLoopContainerModifier currentModifier = (RectLoopContainerModifier)modifier;
+
+            if (_inputWidth.Value != null && !_inputWidth.Value.Equals("") && !_inputWidth.Value.Equals("-"))
+                currentModifier.Width = int.Parse(_inputWidth.Value.Replace(".", ","));
+
+            if (_inputHeight.Value != null && !_inputHeight.Value.Equals("") && !_inputHeight.Value.Equals("-"))
+                currentModifier.Height = int.Parse(_inputHeight.Value.Replace(".", ","));
+
+            _modifiers[_key] = currentModifier;
+        }
+    }
+}

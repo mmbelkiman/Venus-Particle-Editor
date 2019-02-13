@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>368db2e4-c0b7-4851-9879-ec082c5ceb76</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Venus_Particle_Editor</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalFields.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyboardHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoggerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\CircleContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\ColourInterpolator2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\Drag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\HueInterpolator2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\LinearGravity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\OpacityFastFade.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\OpacityInterpolator2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\OpacityInterpolator3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\RectContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\RectLoopContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\Rotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\ScaleInterpolator2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\VelocityColour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\VelocityColourInfinite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\VelocityHue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modifiers\Vortex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+</Project>

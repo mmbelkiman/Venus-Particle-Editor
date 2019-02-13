@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{046C631B-DF60-496E-B2ED-C7BBFBF2F059}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Desktop</RootNamespace>
+    <AssemblyName>Venus Particle Editor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LINUX</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>venus.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Venus Particle Editor\GlobalFields.cs">
+      <Link>GlobalFields.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\JsonHelper.cs">
+      <Link>JsonHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\KeyboardHelper.cs">
+      <Link>KeyboardHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\LoggerHelper.cs">
+      <Link>LoggerHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\MainScreen.cs">
+      <Link>MainScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\CircleContainer.cs">
+      <Link>Modifiers\CircleContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\ColourInterpolator2.cs">
+      <Link>Modifiers\ColourInterpolator2.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\Drag.cs">
+      <Link>Modifiers\Drag.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\HueInterpolator2.cs">
+      <Link>Modifiers\HueInterpolator2.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\LinearGravity.cs">
+      <Link>Modifiers\LinearGravity.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\OpacityFastFade.cs">
+      <Link>Modifiers\OpacityFastFade.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\OpacityInterpolator2.cs">
+      <Link>Modifiers\OpacityInterpolator2.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\OpacityInterpolator3.cs">
+      <Link>Modifiers\OpacityInterpolator3.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\RectContainer.cs">
+      <Link>Modifiers\RectContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\RectLoopContainer.cs">
+      <Link>Modifiers\RectLoopContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\Rotation.cs">
+      <Link>Modifiers\Rotation.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\ScaleInterpolator2.cs">
+      <Link>Modifiers\ScaleInterpolator2.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\VelocityColour.cs">
+      <Link>Modifiers\VelocityColour.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\VelocityColourInfinite.cs">
+      <Link>Modifiers\VelocityColourInfinite.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\VelocityHue.cs">
+      <Link>Modifiers\VelocityHue.cs</Link>
+    </Compile>
+    <Compile Include="..\Venus Particle Editor\Modifiers\Vortex.cs">
+      <Link>Modifiers\Vortex.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DataTypes">
+      <HintPath>..\libs\DataTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="GeonBit.UI">
+      <HintPath>..\libs\GeonBit.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.7.0.1707, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VenusParticleEngine">
+      <HintPath>..\libs\VenusParticleEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\SDL2.dll">
+      <Link>x86\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\SDL2.dll">
+      <Link>x64\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\soft_oal.dll">
+      <Link>x86\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\soft_oal.dll">
+      <Link>x64\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libSDL2-2.0.so.0">
+      <Link>x86\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libSDL2-2.0.so.0">
+      <Link>x64\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libopenal.so.1">
+      <Link>x86\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libopenal.so.1">
+      <Link>x64\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libSDL2-2.0.0.dylib">
+      <Link>libSDL2-2.0.0.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
+      <Link>libopenal.1.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
+      <Link>MonoGame.Framework.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <MonoGameContentReference Include="..\Venus Particle Editor\Content\Content.mgcb">
+      <Link>Content\Content.mgcb</Link>
+    </MonoGameContentReference>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="venus.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
