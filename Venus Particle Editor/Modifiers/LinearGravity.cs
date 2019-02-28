@@ -71,6 +71,9 @@ namespace VenusParticleEditor.Modifiers
             _modifiers = modifiers;
             if (_modifiers != null && _modifiers.ContainsKey(key))
             {
+                directionX.Value = ((LinearGravityModifier)_modifiers[key]).Direction.X.ToString();
+                directionY.Value = ((LinearGravityModifier)_modifiers[key]).Direction.Y.ToString();
+                strength.Value = ((LinearGravityModifier)_modifiers[key]).Strength.ToString();
             }
         }
 
@@ -78,7 +81,7 @@ namespace VenusParticleEditor.Modifiers
         {
             if (checkboxActive.Checked)
             {
-                _modifiers.Add(key, new VenusParticleEngine.Core.Modifiers.LinearGravityModifier());
+                _modifiers.Add(key, new LinearGravityModifier());
             }
             else
             {

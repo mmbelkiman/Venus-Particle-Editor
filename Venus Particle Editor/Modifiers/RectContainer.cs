@@ -78,7 +78,6 @@ namespace VenusParticleEditor.Modifiers
             {
                 _inputWidth.Value = ((VenusParticleEngine.Core.Modifiers.Container.RectContainerModifier)_modifiers[_key]).Width.ToString().Replace(",", ".");
                 _inputHeight.Value = ((VenusParticleEngine.Core.Modifiers.Container.RectContainerModifier)_modifiers[_key]).Height.ToString().Replace(",", ".");
-
                 _inputRestitutionCoefficient.Value = ((VenusParticleEngine.Core.Modifiers.Container.RectContainerModifier)_modifiers[_key]).RestitutionCoefficient.ToString().Replace(",", ".");
             }
         }

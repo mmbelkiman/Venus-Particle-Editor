@@ -11,7 +11,7 @@ namespace VenusParticleEditor
 
 
         public static Vector2 PANEL_EDITOR_INSIDE_SIZE = new Vector2(-1f, -1f);
-        public static string SOFTWARE_VERSION = "1.0.0";
+        public static string SOFTWARE_VERSION = "1.0.1";
         public static string GEONBITUI_VERION = "3.4.0.0";
         public static int APP_WIDTH = 1000;
         public static int APP_HEIGHT = 720;

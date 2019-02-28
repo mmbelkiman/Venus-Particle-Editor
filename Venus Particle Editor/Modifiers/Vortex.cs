@@ -23,9 +23,7 @@ namespace VenusParticleEditor.Modifiers
         private TextInput maxSpeed { get; set; }
 
         public Panel Panel
-        {
-            get { return panelMaster; }
-        }
+        { get { return panelMaster; } }
 
         public Vortex()
         {
