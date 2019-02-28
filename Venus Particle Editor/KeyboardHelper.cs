@@ -44,7 +44,6 @@ namespace VenusParticleEditor
         public bool IsKeyDown(Keys key)
         {
             if (!Enabled) { return false; }
-            Console.WriteLine(key + " " + KeyboardState.IsKeyDown(key) + Keyboard.GetState().IsKeyDown(key));
 
             return KeyboardState.IsKeyDown(key);
         }

@@ -18,7 +18,7 @@ using static VenusParticleEngine.Core.Profiles.Profile;
 
 /***
  * Venus Particle Editor
- * 1.0.0.0 feb/2019
+ * 1.0.0.2 feb/2019
  * Marcelo Belkiman @mmbelkiman
  * Icon made by Smashicons from www.flaticon.com
  * */
@@ -52,6 +52,7 @@ namespace VenusParticleEditor
         private bool _queueActionExport = false;
         private bool _queueActionLoad = false;
         private bool _moveCursorMode = false;
+        private float _zoom = 1.0f;
 
         private Modifiers.CircleContainer _modifierCircleContainer;
         private Modifiers.ColourInterpolator2 _modifierColourInterpolator2;
@@ -79,6 +80,7 @@ namespace VenusParticleEditor
         private Paragraph _parametersParagraphColorS;
         private Paragraph _parametersParagraphColorL;
         private Paragraph _parametersParagraphOpacity;
+        private RichParagraph _paragraphZoomText;
         private Paragraph _paragraphImageName;
         private Slider _parametersSliderColorH;
         private Slider _parametersSliderColorS;
@@ -150,7 +152,11 @@ namespace VenusParticleEditor
             _logger.Info("Newtonsoft.Json ver: " + Assembly.LoadFrom("Newtonsoft.Json.dll").GetName().Version);
             _logger.Info("Monogame ver: " + Assembly.LoadFrom("Monogame.Framework.dll").GetName().Version);
             _logger.Info("Venus Particle engine ver: " + Assembly.LoadFrom("VenusParticleEngine.dll").GetName().Version);
-            _logger.Info("F9 move particle"
+            _logger.Info(
+                "F6 zoom out"
+                + " / F7 reset zoom"
+                + " / F8 zoom in"
+               + " / F9 move particle"
                + " / F10 change background"
                + "/ F11 full screen mode"
                + "/ F12 show/hide log");
@@ -171,7 +177,7 @@ namespace VenusParticleEditor
                 _logger.Error(e.Message);
             }
 
-            _spriteBatch.Begin(blendState: BlendState.AlphaBlend);
+            _spriteBatch.Begin(blendState: BlendState.AlphaBlend, transformMatrix: Matrix.CreateScale(_zoom));
             _spriteBatch.Draw(_particleEffect);
             _spriteBatch.End();
 
@@ -187,9 +193,9 @@ namespace VenusParticleEditor
                 Load();
 
             if (_moveCursorMode)
-            { _particleEffect.Trigger(new Vector(Mouse.GetState().X, Mouse.GetState().Y)); }
+            { _particleEffect.Trigger(new Vector(Mouse.GetState().X/_zoom, Mouse.GetState().Y/_zoom)); }
             else
-            { _particleEffect.Trigger(new Vector(150, 400)); }
+            { _particleEffect.Trigger(new Vector(150/_zoom, 400/_zoom)); }
 
             UserInterface.Active.Update(gameTime);
 
@@ -276,6 +282,9 @@ namespace VenusParticleEditor
             // add title and text
             var welcomeText = new RichParagraph("{{ORANGE}}     Venus {{DEFAULT}}Particle Editor", Anchor.TopLeft, new Vector2(180, TOP_PANEL_HEIGHT), offset: new Vector2(50, 90));
             UserInterface.Active.AddEntity(welcomeText);
+
+            _paragraphZoomText = new RichParagraph("Zoom ", Anchor.TopLeft, new Vector2(180, TOP_PANEL_HEIGHT), offset: new Vector2(50, 150), scale : 0.8f);
+            UserInterface.Active.AddEntity(_paragraphZoomText);
 
             //Dropdown Emitter
             _dropdownEmitter = new DropDown(new Vector2(290, -1), anchor: Anchor.TopRight, offset: new Vector2(170, 0))
@@ -1039,6 +1048,23 @@ namespace VenusParticleEditor
 
         private void UpdateKeyboard()
         {
+            _paragraphZoomText.Text = "zoom " + _zoom;
+
+            if (_keyboardHelper.IsNewKeyRelease(Microsoft.Xna.Framework.Input.Keys.F6))
+            {
+                _zoom -= 0.1f;
+            }
+
+            if (_keyboardHelper.IsNewKeyRelease(Microsoft.Xna.Framework.Input.Keys.F7))
+            {
+                _zoom = 1.0f;
+            }
+
+            if (_keyboardHelper.IsNewKeyRelease(Microsoft.Xna.Framework.Input.Keys.F8))
+            {
+                _zoom += 0.1f;
+            }
+
             if (_keyboardHelper.IsNewKeyRelease(Microsoft.Xna.Framework.Input.Keys.F9))
             {
                 _moveCursorMode = !_moveCursorMode;
