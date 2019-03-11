@@ -9,7 +9,7 @@ This editor use [Venus Particle Engine](https://github.com/mmbelkiman/Venus-Part
 [![Itch.io](https://jessemillar.com/available-on-itchio-badge/badge-bw.png)](https://mmbelkiman.itch.io/venus-particle-editor)
 
 # Depedencies
- - [Newtonsoft.Json 11.0.2](https://github.com/JamesNK/Newtonsoft.Json/tree/11.0.2)
+ - [Newtonsoft.Json 12.0.1](https://github.com/JamesNK/Newtonsoft.Json/tree/11.0.2)
  - Monogame 3.7 or higher
  - [GeonBitUI 3.4](https://github.com/RonenNess/GeonBit.UI)
 
