@@ -193,9 +193,9 @@ namespace VenusParticleEditor
                 Load();
 
             if (_moveCursorMode)
-            { _particleEffect.Trigger(new Vector(Mouse.GetState().X/_zoom, Mouse.GetState().Y/_zoom)); }
+            { _particleEffect.Trigger(new Vector(Mouse.GetState().X / _zoom, Mouse.GetState().Y / _zoom)); }
             else
-            { _particleEffect.Trigger(new Vector(150/_zoom, 400/_zoom)); }
+            { _particleEffect.Trigger(new Vector(150 / _zoom, 400 / _zoom)); }
 
             UserInterface.Active.Update(gameTime);
 
@@ -283,7 +283,7 @@ namespace VenusParticleEditor
             var welcomeText = new RichParagraph("{{ORANGE}}     Venus {{DEFAULT}}Particle Editor", Anchor.TopLeft, new Vector2(180, TOP_PANEL_HEIGHT), offset: new Vector2(50, 90));
             UserInterface.Active.AddEntity(welcomeText);
 
-            _paragraphZoomText = new RichParagraph("Zoom ", Anchor.TopLeft, new Vector2(180, TOP_PANEL_HEIGHT), offset: new Vector2(50, 150), scale : 0.8f);
+            _paragraphZoomText = new RichParagraph("Zoom ", Anchor.TopLeft, new Vector2(180, TOP_PANEL_HEIGHT), offset: new Vector2(50, 150), scale: 0.8f);
             UserInterface.Active.AddEntity(_paragraphZoomText);
 
             //Dropdown Emitter
@@ -372,6 +372,7 @@ namespace VenusParticleEditor
             {
                 _panelEditor = new GeonBit.UI.Entities.Panel(GlobalFields.PANEL_EDITOR_SIZE, PanelSkin.Fancy, Anchor.CenterRight, offset: new Vector2(0, -40));
                 UserInterface.Active.AddEntity(_panelEditor);
+
 
                 // create panel tabs
                 PanelTabs tabs = new PanelTabs
@@ -692,6 +693,13 @@ namespace VenusParticleEditor
 
                     tab.panel.PanelOverflowBehavior = PanelOverflowBehavior.VerticalScroll;
                     tab.panel.Scrollbar.AdjustMaxAutomatically = true;
+
+                    tab.panel.AddChild(new HorizontalLine());
+                    tab.panel.AddChild(new HorizontalLine());
+                    tab.panel.AddChild(new HorizontalLine());
+                    tab.panel.AddChild(new HorizontalLine());
+                    tab.panel.AddChild(new HorizontalLine());
+                    tab.panel.AddChild(new HorizontalLine());
                 }
 
                 // add Modifiers panel
